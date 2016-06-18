@@ -1,0 +1,31 @@
+{
+  "name":        "mb-tec/log",
+  "description": "Logging Service Zend Framework 2",
+  "homepage":    "https://github.com/mb-tec/log",
+  "type":        "library",
+  "license":     "BSD-3-Clause",
+  "keywords":   ["mb-tec", "logging", "zf2", "zend", "framework"],
+  "authors": [
+    {
+      "name":     "Matthias Büsing",
+      "email":    "info@mb-tec.eu",
+      "homepage": "http://www.mb-tec.eu",
+      "role":     "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.5",
+    "zendframework/zend-version": "2.*"
+  },
+  "suggest": {
+    "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
+  },
+  "require-dev": {
+    "zendframework/zend-version": "2.*"
+  },
+  "autoload": {
+    "psr-0": {"MBtecLog": "src/"}
+  }
+}

@@ -1,0 +1,35 @@
+<?php
+/**
+ * @author      Matthias Büsing <info@mb-tec.eu>
+ * @copyright   2016 Matthias Büsing
+ * @license     http://www.opensource.org/licenses/bsd-license.php BSD License
+ * @link        http://mb-tec.eu
+ */
+return [
+    'mbtec' => [
+        'log' => [
+            'writer' => [
+                'file' => [
+                    'enabled' => true,
+                ],
+                'mail' => [
+                    'enabled' => true,
+                    'sender_name' => 'Application',
+                    'sender_mail' => 'noreply@application.de',
+                    'receivers' => [
+                        'info@mb-tec.eu',
+                    ],
+                    'subject_prepend_text' => 'Fehlerreport Application',
+                ],
+                'graylog' => [
+                    'enabled' => true,
+                    'stream' => 'App',
+                    'transport' => [
+                        'type' => 'Udp',
+                        'host' => 'www.mb-tec.eu',
+                    ],
+                ],
+            ],
+        ],
+    ],
+];
