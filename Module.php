@@ -28,12 +28,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
 
         $oLogger = $sm->get('mbtec.log.service')->getDefaultLogger();
 
-//        Log\Logger::registerErrorHandler($oLogger);
-//        Log\Logger::registerExceptionHandler($oLogger);
+        Log\Logger::registerErrorHandler($oLogger);
+        Log\Logger::registerExceptionHandler($oLogger);
 //        Log\Logger::registerFatalErrorShutdownFunction($oLogger);
 
-        Service\StaticLogger::setServiceManager(
-            $e->getApplication()->getServiceManager()
+        Service\StaticLogger::setLogService(
+            $e->getApplication()->getServiceManager()->get('mbtec.log.service')
         );
     }
 

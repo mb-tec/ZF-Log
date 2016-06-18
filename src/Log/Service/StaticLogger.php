@@ -12,29 +12,18 @@ namespace MBtec\Log\Service;
  */
 class StaticLogger
 {
-    protected static $_oServiceManager = null;
     protected static $_oLogservice = null;
-
-    /**
-     * @param $oServiceManager
-     */
-    public static function setServiceManager($oServiceManager)
-    {
-        self::$_oServiceManager = $oServiceManager;
-
-        return;
-    }
 
     /**
      * @param      $iLevel
      * @param      $sMsg
      * @param null $sFile
+     *
+     * @return mixed
      */
     public static function log($iLevel, $sMsg, $sFile = null)
     {
-        self::_getLogService()->log($iLevel, $sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->log($iLevel, $sMsg, $sFile);
     }
 
     /**
@@ -44,9 +33,7 @@ class StaticLogger
      */
     public static function emerg($sMsg, $sFile = null)
     {
-        self::_getLogService()->emerg($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->emerg($sMsg, $sFile);
     }
 
     /**
@@ -56,9 +43,7 @@ class StaticLogger
      */
     public static function alert($sMsg, $sFile = null)
     {
-        self::_getLogService()->alert($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->alert($sMsg, $sFile);
     }
 
     /**
@@ -68,9 +53,7 @@ class StaticLogger
      */
     public static function crit($sMsg, $sFile = null)
     {
-        self::_getLogService()->crit($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->crit($sMsg, $sFile);
     }
 
     /**
@@ -80,9 +63,7 @@ class StaticLogger
      */
     public static function err($sMsg, $sFile = null)
     {
-        self::_getLogService()->err($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->err($sMsg, $sFile);
     }
 
     /**
@@ -92,9 +73,7 @@ class StaticLogger
      */
     public static function warn($sMsg, $sFile = null)
     {
-        self::_getLogService()->warn($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->warn($sMsg, $sFile);
     }
 
     /**
@@ -104,9 +83,7 @@ class StaticLogger
      */
     public static function notice($sMsg, $sFile = null)
     {
-        self::_getLogService()->notice($sMsg, $sFile);
-
-        return;
+        self::$_oLogservice->notice($sMsg, $sFile);
     }
 
     /**
@@ -116,9 +93,7 @@ class StaticLogger
      */
     public static function info($sMsg, $sFile = null)
     {
-        self::_getLogService()->info($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->info($sMsg, $sFile);
     }
 
     /**
@@ -128,31 +103,24 @@ class StaticLogger
      */
     public static function debug($sMsg, $sFile = null)
     {
-        self::_getLogService()->debug($sMsg, $sFile);
-
-        return;
+        return self::$_oLogservice->debug($sMsg, $sFile);
     }
 
     /**
      * @param \Exception $oEx
+     *
+     * @return mixed
      */
     public static function logException(\Exception $oEx)
     {
-        self::_getLogService()->logException($oEx);
-
-        return;
+        return self::$_oLogservice->logException($oEx);
     }
 
     /**
-     * @return \Mbtec\Log\Logservice
+     * @param LogService $oLogService
      */
-    protected static function _getLogService()
+    public function setLogService(LogService $oLogService)
     {
-        if (self::$_oLogservice === null) {
-            /** @var \Mbtec\Log\Logservice _oLogservice */
-            self::$_oLogservice = self::$_oServiceManager->get('mbtec.log.service');
-        }
-
-        return self::$_oLogservice;
+        self::$_oLogservice = $oLogService;
     }
 }
