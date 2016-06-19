@@ -1,7 +1,7 @@
 {
   "name":        "mb-tec/log",
   "description": "Logging Service for Zend Framework 2",
-  "homepage":    "https://github.com/mb-tec/Log",
+  "homepage":    "https://bitbucket.org/mbuesing/zf-log",
   "type":        "library",
   "license":     "GNU General Public License",
   "keywords":   ["mb-tec", "logging", "zf2", "zend", "framework"],
