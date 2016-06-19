@@ -1,5 +1,5 @@
 {
-  "name":        "mb-tec/log",
+  "name":        "mb-tec/zf-log",
   "description": "Logging Service for Zend Framework 2",
   "homepage":    "https://bitbucket.org/mbuesing/zf-log",
   "type":        "library",
