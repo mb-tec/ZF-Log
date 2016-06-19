@@ -1,9 +1,9 @@
 {
   "name":        "mb-tec/log",
-  "description": "Logging Service Zend Framework 2",
-  "homepage":    "https://github.com/mb-tec/log",
+  "description": "Logging Service for Zend Framework 2",
+  "homepage":    "https://github.com/mb-tec/Log",
   "type":        "library",
-  "license":     "BSD-3-Clause",
+  "license":     "GNU General Public License",
   "keywords":   ["mb-tec", "logging", "zf2", "zend", "framework"],
   "authors": [
     {
