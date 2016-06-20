@@ -1,10 +1,10 @@
 <?php
 
-namespace MBtec\Log\Service;
+namespace MBtecZfLog\Service;
 
 /**
  * Class        StaticLogger
- * @package     MBtec\Log
+ * @package     MBtecZfLog\Service
  * @author      Matthias Büsing <info@mb-tec.eu>
  * @copyright   2016 Matthias Büsing
  * @license     GNU General Public License

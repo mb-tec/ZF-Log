@@ -1,6 +1,6 @@
 <?php
 
-namespace MBtec\Log\Service;
+namespace MBtecZfLog\Service;
 
 use Exception;
 use Zend\Log\Formatter\Simple as SimpleFormatter;
@@ -16,7 +16,7 @@ use MBtec\Log\Writer\Graylog2;
 
 /**
  * Class        LogService
- * @package     MBtec\Log
+ * @package     MBtecZfLog\Service
  * @author      Matthias Büsing <info@mb-tec.eu>
  * @copyright   2016 Matthias Büsing
  * @license     GNU General Public License

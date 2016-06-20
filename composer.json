@@ -26,6 +26,11 @@
     "zendframework/zend-version": "2.*"
   },
   "autoload": {
-    "psr-0": {"MBtecZfLog": "src/"}
+    "psr-0": {
+      "MBtecZfLog": "src/"
+    },
+    "classmap": [
+      "./Module.php"
+    ]
   }
 }

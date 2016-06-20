@@ -1,12 +1,12 @@
 <?php
 
-namespace MBtec\Log\Formatter;
+namespace MBtecZfLog\Formatter;
 
 use Zend\Log\Formatter\Simple;
 
 /**
- * Class        Gelf
- * @package     MBtec\Log\Formatter
+ * Class        File
+ * @package     MBtecZfLog\Formatter
  * @author      Matthias Büsing <info@mb-tec.eu>
  * @copyright   2016 Matthias Büsing
  * @license     GNU General Public License

@@ -1,13 +1,13 @@
 <?php
 
-namespace MBtec\Log\Writer;
+namespace MBtecZfLog\Writer;
 
 use Zend\Log\Writer\AbstractWriter;
 use Gelf\Publisher;
 
 /**
  * Class        Graylog2
- * @package     MBtec\Log\Writer
+ * @package     MBtecZfLog\Writer
  * @author      Matthias Büsing <info@mb-tec.eu>
  * @copyright   2016 Matthias Büsing
  * @license     GNU General Public License
