@@ -1,6 +1,6 @@
 <?php
 
-namespace MBtec\Log;
+namespace MBtecZfLog;
 
 use Zend\Log;
 use Zend\Mvc\MvcEvent;
@@ -10,7 +10,7 @@ use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 /**
  * Class        Module
- * @package     MBtec\Log
+ * @package     MBtecZfLog
  * @author      Matthias Büsing <info@mb-tec.eu>
  * @copyright   2016 Matthias Büsing
  * @license     GNU General Public License
