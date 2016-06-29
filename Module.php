@@ -33,7 +33,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
 //        Log\Logger::registerFatalErrorShutdownFunction($oLogger);
 
         Service\StaticLogger::setLogService(
-            $e->getApplication()->getServiceManager()->get('mbtec.log.service')
+            $e->getApplication()->getServiceManager()->get('mbtec.zflog.service')
         );
     }
 
