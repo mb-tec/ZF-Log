@@ -91,7 +91,11 @@ class Gelf extends Base
         if (isset($event['extra']) && isset($event['extra']['trace'])) {
             $aTraceOut = [];
             foreach ($event['extra']['trace'] as $aTrace) {
-                $aTraceOut[] = sprintf('file: %s | line: %s', $aTrace['file'], $aTrace['line']);
+                if (isset($aTrace['file']) && isset($aTrace['line'])) {
+                    $aTraceOut[] = sprintf('file: %s | line: %s', $aTrace['file'], $aTrace['line']);
+                } elseif (isset($aTrace['function']) && isset($aTrace['class']) && isset($aTrace['type'])) {
+                    $aTraceOut[] = sprintf('%s %s %s', $aTrace['class'], $aTrace['type'], $aTrace['function']);
+                }
             }
 
             $message->setAdditional('trace', implode(PHP_EOL, $aTraceOut));
