@@ -62,22 +62,29 @@ BACKTRACE:
      */
     public function getDefaultLogger()
     {
-        return $this->_getLogger('system.log');
+        $aOptions = [
+            'exceptionhandler' => true,
+            'errorhandler' => true,
+            'fatal_error_shutdownfunction' => true,
+        ];
+
+        return $this->_getLogger('system.log', $aOptions);
     }
 
     /**
-     * @param $sFile
+     * @param       $sFile
+     * @param array $aOptions
      *
      * @return mixed
      */
-    protected function _getLogger($sFile)
+    protected function _getLogger($sFile, array $aOptions = [])
     {
         $sKey = md5($sFile);
 
         if (!isset($this->_aLoggers[$sKey])) {
             $aWriterConfig = $this->_aConfig['writer'];
 
-            $oLogger = new Logger();
+            $oLogger = new Logger($aOptions);
 
             if (isset($aWriterConfig['file']['enabled']) && $aWriterConfig['file']['enabled']) {
                 $oFileWriter = $this->_getFileWriter($sFile);
