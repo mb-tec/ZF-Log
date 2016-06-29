@@ -3,7 +3,7 @@
 namespace MBtecZfLog\Writer;
 
 use Zend\Log\Writer\AbstractWriter;
-use Gelf\Publisher;
+use Gelf;
 
 /**
  * Class        Graylog2
@@ -47,16 +47,17 @@ class Graylog2 extends AbstractWriter
     }
 
     /**
-     * @return Publisher
+     * @return Gelf\Publisher
      */
     protected function _getPublisher()
     {
         if (!is_object($this->_oPublisher)) {
-            $sTransportClass = sprintf('\Gelf\Transport\%sTransport', $this->_sTransportData['type']);
-            $oTransport = new $sTransportClass($this->_sTransportData['host'], $this->_sTransportData['port']);
-            $oPublisher = new Publisher($oTransport);
-
-            $this->_oPublisher = $oPublisher;
+            $sTransportClass = sprintf('Gelf\Transport\%sTransport', $this->_sTransportData['type']);
+            $oTransport = new $sTransportClass(
+                $this->_sTransportData['host'], $this->_sTransportData['port']
+            );
+            
+            $this->_oPublisher = new Gelf\Publisher($oTransport);
         }
 
         return $this->_oPublisher;

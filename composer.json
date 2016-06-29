@@ -17,7 +17,6 @@
   "prefer-stable": true,
   "require": {
     "php": ">=5.5",
-    "zendframework/zend-version": "2.*",
     "graylog2/gelf-php": "~1.2",
     "mb-tec/zf-email": "dev-master"
   },
@@ -25,7 +24,7 @@
     "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
   },
   "require-dev": {
-    "zendframework/zend-version": "2.*"
+    "zendframework/zend-log": "2.*"
   },
   "autoload": {
     "psr-0": {
