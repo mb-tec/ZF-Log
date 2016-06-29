@@ -26,7 +26,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
         $app = $e->getApplication();
         $sm = $app->getServiceManager();
 
-        $oLogger = $sm->get('mbtec.log.service')->getDefaultLogger();
+        $oLogger = $sm->get('mbtec.zflog.service')->getDefaultLogger();
 
         Log\Logger::registerErrorHandler($oLogger);
         Log\Logger::registerExceptionHandler($oLogger);
