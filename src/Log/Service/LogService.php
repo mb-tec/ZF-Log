@@ -55,20 +55,14 @@ BACKTRACE:
     {
         $this->_oTransportService = $oTransportService;
         $this->_aConfig = $aConfig;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getDefaultLogger()
-    {
         $aOptions = [
             'exceptionhandler' => true,
             'errorhandler' => true,
             'fatal_error_shutdownfunction' => true,
         ];
 
-        return $this->_getLogger('system.log', $aOptions);
+        $this->_getLogger('system.log', $aOptions);
     }
 
     /**
@@ -112,7 +106,7 @@ BACKTRACE:
 
         return $this->_aLoggers[$sKey];
     }
-    
+
     /**
      * @param      $iLevel
      * @param      $sMsg
