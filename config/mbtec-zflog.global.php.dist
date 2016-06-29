@@ -8,12 +8,14 @@
 return [
     'mbtec' => [
         'zflog' => [
+            'filename_default_log' => 'system.log',
+            'filename_exception_log' => 'exception.log',
             'writer' => [
                 'file' => [
                     'enabled' => true,
                 ],
                 'mail' => [
-                    'enabled' => true,
+                    'enabled' => false,
                     'sender_name' => 'Application',
                     'sender_mail' => 'noreply@application.de',
                     'receivers' => [
@@ -22,7 +24,7 @@ return [
                     'subject_prepend_text' => 'Fehlerreport Application',
                 ],
                 'graylog' => [
-                    'enabled' => true,
+                    'enabled' => false,
                     'stream' => 'App',
                     'transport' => [
                         'type' => 'Udp',

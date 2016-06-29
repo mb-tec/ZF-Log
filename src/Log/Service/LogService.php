@@ -30,6 +30,8 @@ class LogService implements LoggerInterface
     protected $_oDefaultFormatter = null;
 
     const DEFAULT_LOG_DIR = 'data/log';
+    const DEFAULT_FILENAME = 'system.log';
+    const DEFAULT_FILENAME_EXCEPTION = 'exception.log';
     const DEFAULT_FORMATTER_TEMPLATE = '%timestamp% %priorityName%: %requestMethod% %requestUri%
 REQUEST: %requestData%
 TIME: %timeElapsed%s
@@ -73,29 +75,25 @@ BACKTRACE:
         $sKey = md5($sFile);
 
         if (!isset($this->_aLoggers[$sKey])) {
+            $aWriterConfig = $this->_aConfig['writer'];
+
             $oLogger = new Logger();
 
-            if (isset($this->_aConfig['writer']['file']['enabled'])
-                && $this->_aConfig['writer']['file']['enabled']
-            ) {
+            if (isset($aWriterConfig['file']['enabled']) && $aWriterConfig['file']['enabled']) {
                 $oFileWriter = $this->_getFileWriter($sFile);
                 if (is_object($oFileWriter)) {
                     $oLogger->addWriter($oFileWriter);
                 }
             }
 
-            if (isset($this->_aConfig['writer']['mail']['enabled'])
-                && $this->_aConfig['writer']['mail']['enabled']
-            ) {
+            if (isset($aWriterConfig['mail']['enabled']) && $aWriterConfig['mail']['enabled']) {
                 $oMailWriter = $this->_getMailWriter();
                 if (is_object($oMailWriter)) {
                     $oLogger->addWriter($oMailWriter);
                 }
             }
 
-            if (isset($this->_aConfig['writer']['graylog']['enabled'])
-                && $this->_aConfig['writer']['graylog']['enabled']
-            ) {
+            if (isset($aWriterConfig['graylog']['enabled']) && $aWriterConfig['graylog']['enabled']) {
                 $oGraylogWriter = $this->_getGraylogWriter($sFile);
                 if (is_object($oGraylogWriter)) {
                     $oLogger->addWriter($oGraylogWriter);
@@ -270,7 +268,7 @@ BACKTRACE:
     {
         $sFile = isset($this->_aConfig['filename_exception_log'])
             ? basename($this->_aConfig['filename_exception_log'])
-            : 'exception.log';
+            : self::DEFAULT_FILENAME_EXCEPTION;
 
         $this->_log(Logger::ERR, $oEx, $sFile);
 
@@ -374,7 +372,7 @@ BACKTRACE:
         } else {
             $sFile = isset($this->_aConfig['filename_default_log'])
                 ? $this->_aConfig['filename_default_log']
-                : 'system.log';
+                : self::DEFAULT_FILENAME;
         }
 
         $sFile = basename($sFile);
