@@ -10,9 +10,9 @@ use Zend\Log\LoggerInterface;
 use Zend\Log\Writer\Stream;
 use Zend\Log\Writer\Mail;
 use Zend\Log\Filter\Priority as FilterPriority;
-use MBtec\Email\Service\Transport;
-use MBtec\Log\Formatter;
-use MBtec\Log\Writer\Graylog2;
+use MBtecZfEmail\Service\Transport;
+use MBtecZfLog\Formatter;
+use MBtecZfLog\Writer\Graylog2;
 
 /**
  * Class        LogService
