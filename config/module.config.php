@@ -7,7 +7,7 @@
  */
 return [
     'mbtec' => [
-        'log' => [
+        'zflog' => [
             'directory' => 'data/log',
             'filename_default_log' => 'system.log',
             'filename_exception_log' => 'exception.log',

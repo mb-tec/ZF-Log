@@ -7,7 +7,7 @@
  */
 return [
     'mbtec' => [
-        'log' => [
+        'zflog' => [
             'writer' => [
                 'file' => [
                     'enabled' => true,

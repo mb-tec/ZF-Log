@@ -44,6 +44,18 @@ BACKTRACE:
 ';
 
     /**
+     * LogService constructor.
+     *
+     * @param Transport $oTransportService
+     * @param array     $aConfig
+     */
+    public function __construct(Transport $oTransportService, array $aConfig)
+    {
+        $this->_oTransportService = $oTransportService;
+        $this->_aConfig = $aConfig;
+    }
+
+    /**
      * @return mixed
      */
     public function getDefaultLogger()
@@ -95,31 +107,7 @@ BACKTRACE:
 
         return $this->_aLoggers[$sKey];
     }
-
-    /**
-     * @param array $aConfig
-     *
-     * @return $this
-     */
-    public function setConfig(array $aConfig)
-    {
-        $this->_aConfig = $aConfig;
-
-        return $this;
-    }
-
-    /**
-     * @param Transport $oTransportService
-     *
-     * @return $this
-     */
-    public function setMailTransportService(Transport $oTransportService)
-    {
-        $this->_oTransportService = $oTransportService;
-
-        return $this;
-    }
-
+    
     /**
      * @param      $iLevel
      * @param      $sMsg

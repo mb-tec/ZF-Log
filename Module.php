@@ -70,20 +70,11 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
     {
         return [
             'factories' => [
-                'mbtec.log.service' => function ($sm) {
-                    $aConfig = $sm->get('config');
-
-                    $oLogService = new Service\LogService();
-
-                    if (isset($aConfig['mbtec']['log'])) {
-                        $oLogService->setConfig($aConfig['mbtec']['log']);
-                    }
-
-                    if ($sm->has('mbtec.email.transport.service')) {
-                        $oLogService->setMailTransportService($sm->get('mbtec.email.transport.service'));
-                    }
-
-                    return $oLogService;
+                'mbtec.zflog.service' => function ($sm) {
+                    return new Service\LogService(
+                        $sm->get('mbtec.zfemail.transport.service'),
+                        $sm->get('config')['mbtec']['zflog']
+                    );
                 },
             ],
         ];
