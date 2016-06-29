@@ -2,6 +2,7 @@
 
 namespace MBtecZfLog;
 
+use Zend\Log;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
@@ -22,6 +23,15 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
      */
     public function onBootstrap(MvcEvent $e)
     {
+        $app = $e->getApplication();
+        $sm = $app->getServiceManager();
+
+        $oLogger = $sm->get('mbtec.zflog.service')->getDefaultLogger();
+
+        Log\Logger::registerErrorHandler($oLogger);
+        Log\Logger::registerExceptionHandler($oLogger);
+        Log\Logger::registerFatalErrorShutdownFunction($oLogger);
+
         Service\StaticLogger::setLogService(
             $e->getApplication()->getServiceManager()->get('mbtec.zflog.service')
         );
