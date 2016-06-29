@@ -2,7 +2,6 @@
 
 namespace MBtecZfLog;
 
-use Zend\Log;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
