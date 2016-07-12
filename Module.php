@@ -43,6 +43,14 @@ class Module implements AutoloaderProviderInterface, ServiceProviderInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    /**
      * @return array
      */
     public function getServiceConfig()
@@ -50,10 +58,10 @@ class Module implements AutoloaderProviderInterface, ServiceProviderInterface
         return [
             'factories' => [
                 'mbtec.zflog.service' => function ($sm) {
-                    return new Service\LogService(
-                        $sm->get('mbtec.zfemail.transport.service'),
-                        $sm->get('config')['mbtec']['zflog']
-                    );
+                    $oTransportService = $sm->get('mbtec.zfemail.transport.service');
+                    $aConfig = $sm->get('config')['mbtec']['zflog'];
+                    
+                    return new Service\LogService($oTransportService, $aConfig);
                 },
             ],
         ];
