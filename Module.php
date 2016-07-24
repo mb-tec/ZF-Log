@@ -57,12 +57,7 @@ class Module implements AutoloaderProviderInterface, ServiceProviderInterface
     {
         return [
             'factories' => [
-                'mbtec.zflog.service' => function ($sm) {
-                    $oTransportService = $sm->get('mbtec.zfemail.transport.service');
-                    $aConfig = $sm->get('config')['mbtec']['zflog'];
-                    
-                    return new Service\LogService($oTransportService, $aConfig);
-                },
+                'mbtec.zflog.service' => Service\LogServiceFactory::class,
             ],
         ];
     }
