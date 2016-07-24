@@ -1,4 +1,7 @@
 <?php
+
+namespace MBtecZfLog;
+
 /**
  * @author      Matthias Büsing <info@mb-tec.eu>
  * @copyright   2016 Matthias Büsing
@@ -6,6 +9,11 @@
  * @link        http://mb-tec.eu
  */
 return [
+    'service_manager' => [
+        'factories' => [
+            'mbtec.zflog.service' => Service\LogServiceFactory::class,
+        ],
+    ],
     'mbtec' => [
         'zflog' => [
             'filename_default_log' => 'system.log',

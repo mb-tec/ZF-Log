@@ -5,7 +5,7 @@ namespace MBtecZfLog;
 use Zend\Log;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 /**
  * Class        Module
@@ -15,7 +15,7 @@ use Zend\ModuleManager\Feature\ServiceProviderInterface;
  * @license     GNU General Public License
  * @link        http://mb-tec.eu
  */
-class Module implements AutoloaderProviderInterface, ServiceProviderInterface
+class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
     /**
      * @param MvcEvent $e
@@ -48,17 +48,5 @@ class Module implements AutoloaderProviderInterface, ServiceProviderInterface
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
-    }
-
-    /**
-     * @return array
-     */
-    public function getServiceConfig()
-    {
-        return [
-            'factories' => [
-                'mbtec.zflog.service' => Service\LogServiceFactory::class,
-            ],
-        ];
     }
 }
