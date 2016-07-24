@@ -252,7 +252,7 @@ BACKTRACE:
 
         try {
             $oLogger = $this->_getLogger($sFile);
-            if (is_object($oLogger)) {
+            if (is_object($oLogger) && $oLogger->getWriters()->count() > 0) {
                 $oLogger->log($iLevel, $sMsg);
             }
         } catch (\Exception $oEx) {
