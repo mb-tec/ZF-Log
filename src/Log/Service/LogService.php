@@ -59,7 +59,7 @@ BACKTRACE:
         $aOptions = [
             'exceptionhandler' => true,
             'errorhandler' => true,
-            'fatal_error_shutdownfunction' => true,
+            //'fatal_error_shutdownfunction' => true,
         ];
 
         $this->_getLogger('system.log', $aOptions);
