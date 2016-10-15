@@ -25,7 +25,7 @@
     "php": ">=5.6",
     "zendframework/zend-log": "2.*",
     "graylog2/gelf-php": "~1.2",
-    "mb-tec/zf-email": "dev-master"
+    "mb-tec/zf-email": "1.*"
   },
   "suggest": {
     "zendframework/zend-modulemanager": "To use it as a Zend Framework module"
