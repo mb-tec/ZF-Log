@@ -3,7 +3,7 @@
   "description": "Logging Service for Zend Framework 3",
   "homepage": "https://bitbucket.org/mbuesing/zf-log",
   "type": "library",
-  "license": "GNU General Public License",
+  "license": "GPL-3.0",
   "keywords": [
     "mb-tec",
     "logging",
