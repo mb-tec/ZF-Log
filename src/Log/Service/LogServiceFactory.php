@@ -2,8 +2,8 @@
 
 namespace MBtecZfLog\Service;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 /**
  * Class        LogServiceFactory
@@ -16,14 +16,16 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class LogServiceFactory implements FactoryInterface
 {
     /**
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ContainerInterface $container
+     * @param                    $requestedName
+     * @param array|null         $options
      *
-     * @return mixed
+     * @return LogService
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $oTransportService = $serviceLocator->get('mbtec.zfemail.transport.service');
-        $aConfig = $serviceLocator->get('config')['mbtec']['zflog'];
+        $oTransportService = $container->get('mbtec.zfemail.transport.service');
+        $aConfig = $container->get('config')['mbtec']['zflog'];
 
         return new LogService($oTransportService, $aConfig);
     }
