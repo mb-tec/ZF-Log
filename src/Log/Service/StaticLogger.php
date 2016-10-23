@@ -119,7 +119,7 @@ class StaticLogger
     /**
      * @param LogService $oLogService
      */
-    public function setLogService(LogService $oLogService)
+    public static function setLogService(LogService $oLogService)
     {
         self::$_oLogservice = $oLogService;
     }
