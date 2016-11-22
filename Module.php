@@ -5,6 +5,7 @@ namespace MBtecZfLog;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class        Module
