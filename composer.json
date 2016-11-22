@@ -32,10 +32,10 @@
   },
   "autoload": {
     "psr-0": {
-      "MBtecZfLog": "src/"
+      "MBtecZfLog\\": "src/"
     },
     "psr-4": {
-      "MBtecZfLog": "src/"
+      "MBtecZfLog\\": "src/"
     },
     "classmap": [
       "./Module.php"
