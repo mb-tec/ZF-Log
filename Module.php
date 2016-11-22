@@ -46,7 +46,7 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
                     $oTransportService = $oSm->get('mbtec.zf-email.transport.service');
                     $aConfig = $oSm->get('config')['mbtec']['zf-log'];
 
-                    return new LogService($oTransportService, $aConfig);
+                    return new Service\LogService($oTransportService, $aConfig);
                 },
             ],
         ];
