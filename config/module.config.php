@@ -16,6 +16,7 @@ return [
                     'enabled' => true,
                     'default_log_filename' => 'system.log',
                     'exception_log_filename' => 'exception.log',
+                    'data_dir' => 'data/log',
                 ],
                 'mail' => [
                     'enabled' => false,

@@ -267,8 +267,8 @@ BACKTRACE:
      */
     public function logException(Exception $oEx)
     {
-        $sFile = isset($this->_aConfig['filename_exception_log'])
-            ? basename($this->_aConfig['filename_exception_log'])
+        $sFile = isset($this->_aConfig['writer']['file']['exception_log_filename'])
+            ? basename($this->_aConfig['writer']['file']['exception_log_filename'])
             : self::DEFAULT_FILENAME_EXCEPTION;
 
         $this->_log(Logger::ERR, $oEx, $sFile);
@@ -283,8 +283,8 @@ BACKTRACE:
      */
     protected function _getFileWriter($sFile)
     {
-        $sLogDir = isset($this->_aConfig['writer']['file']['directory'])
-            ? $this->_aConfig['writer']['file']['directory']
+        $sLogDir = isset($this->_aConfig['writer']['file']['data_dir'])
+            ? $this->_aConfig['writer']['file']['data_dir']
             : self::DEFAULT_LOG_DIR;
 
         $oWriter = new Stream($sLogDir . DIRECTORY_SEPARATOR . $sFile);
@@ -371,8 +371,8 @@ BACKTRACE:
         if (is_string($sLogfile) && $sLogfile != '') {
             $sFile = $sLogfile;
         } else {
-            $sFile = isset($this->_aConfig['filename_default_log'])
-                ? $this->_aConfig['filename_default_log']
+            $sFile = isset($this->_aConfig['writer']['file']['default_log_filename'])
+                ? $this->_aConfig['writer']['file']['default_log_filename']
                 : self::DEFAULT_FILENAME;
         }
 
