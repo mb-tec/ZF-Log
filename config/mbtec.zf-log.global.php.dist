@@ -7,9 +7,7 @@
  */
 return [
     'mbtec' => [
-        'zflog' => [
-            'filename_default_log' => 'system.log',
-            'filename_exception_log' => 'exception.log',
+        'zf-log' => [
             'writer' => [
                 'file' => [
                     'enabled' => true,

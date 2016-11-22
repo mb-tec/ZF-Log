@@ -9,18 +9,13 @@ namespace MBtecZfLog;
  * @link        http://mb-tec.eu
  */
 return [
-    'service_manager' => [
-        'factories' => [
-            'mbtec.zflog.service' => Service\LogServiceFactory::class,
-        ],
-    ],
     'mbtec' => [
-        'zflog' => [
-            'filename_default_log' => 'system.log',
-            'filename_exception_log' => 'exception.log',
+        'zf-log' => [
             'writer' => [
                 'file' => [
                     'enabled' => true,
+                    'default_log_filename' => 'system.log',
+                    'exception_log_filename' => 'exception.log',
                 ],
                 'mail' => [
                     'enabled' => false,

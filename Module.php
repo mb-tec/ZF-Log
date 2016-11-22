@@ -2,10 +2,9 @@
 
 namespace MBtecZfLog;
 
-use Zend\Log;
 use Zend\Mvc\MvcEvent;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 /**
  * Class        Module
@@ -15,7 +14,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
  * @license     GNU General Public License
  * @link        http://mb-tec.eu
  */
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface
+class Module implements ConfigProviderInterface, ServiceProviderInterface
 {
     /**
      * @param MvcEvent $e
@@ -23,23 +22,8 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     public function onBootstrap(MvcEvent $e)
     {
         Service\StaticLogger::setLogService(
-            $e->getApplication()->getServiceManager()->get('mbtec.zflog.service')
+            $e->getApplication()->getServiceManager()->get('mbtec.zf-log.service')
         );
-    }
-
-    /**
-     * Return MBtec\Log autoload config.
-     *
-     * @see AutoloaderProviderInterface::getAutoloaderConfig()
-     * @return array
-     */
-    public function getAutoloaderConfig()
-    {
-        return [
-            'Zend\Loader\ClassMapAutoloader' => [
-                __DIR__ . '/autoload_classmap.php',
-            ],
-        ];
     }
 
     /**
@@ -48,5 +32,22 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    /**
+     * @return array
+     */
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'mbtec.zf-log.service' => function (ServiceManager $oSm) {
+                    $oTransportService = $oSm->get('mbtec.zf-email.transport.service');
+                    $aConfig = $oSm->get('config')['mbtec']['zf-log'];
+
+                    return new LogService($oTransportService, $aConfig);
+                },
+            ],
+        ];
     }
 }
